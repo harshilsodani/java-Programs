@@ -422,16 +422,141 @@ public class LinkedList {
         }
     }
 
+    public Node getIntersectionNode(Node head1, Node head2) {
+
+        while (head2 != null) {
+            Node temp = head1;
+            while (temp != null) {
+                if (temp == head2) {
+                    return head2;
+                }
+                temp = temp.next;
+            }
+            head2 = head2.next;
+        }
+        return null;
+    }
+
+    public void skipMDeleteN(Node head, int M, int N) {
+        Node curr = head;
+        Node t;
+
+        while (curr != null) {
+
+            for (int i = 1; i < M && curr != null; i++) {
+                curr = curr.next;
+            }
+
+            if (curr == null) {
+                return;
+            }
+
+            t = curr.next;
+            for (int i = 1; i <= N && t != null; i++) {
+                Node temp = t;
+                t = t.next;
+            }
+
+            curr.next = t;
+            curr = t;
+        }
+    }
+
+    public void swapNodes(int key1, int key2) {
+        if (key1 == key2) {
+            return;
+        }
+
+        Node curr1 = head;
+        Node prev1 = null;
+
+        while (curr1 != null && curr1.data != key1) {
+            prev1 = curr1;
+            curr1 = curr1.next;
+        }
+
+        Node curr2 = head;
+        Node prev2 = null;
+
+        while (curr2 != null && curr2.data != key2) {
+            prev2 = curr2;
+            curr2 = curr2.next;
+        }
+
+        if (curr1 == null || curr2 == null) {
+            return;
+        }
+
+        if (prev1 != null) {
+            prev1.next = curr2;
+        } else {
+            head = curr2;
+        }
+
+        if (prev2 != null) {
+            prev2.next = curr1;
+        } else {
+            head = curr1;
+        }
+
+        Node temp = curr1.next;
+        curr1.next = curr2.next;
+        curr2.next = temp;
+
+    }
+
+    public void segregateEvenOdd() {
+        Node end = head;
+        Node prev = null;
+        Node curr = head;
+
+        while (end.next != null)
+            end = end.next;
+
+        Node new_end = end;
+
+        while (curr.data % 2 != 0 && curr != end) {
+            new_end.next = curr;
+            curr = curr.next;
+            new_end.next.next = null;
+            new_end = new_end.next;
+        }
+
+        if (curr.data % 2 == 0) {
+            head = curr;
+
+            while (curr != end) {
+                if (curr.data % 2 == 0) {
+                    prev = curr;
+                    curr = curr.next;
+                } else {
+                    prev.next = curr.next;
+                    curr.next = null;
+                    new_end.next = curr;
+                    new_end = curr;
+                    curr = prev.next;
+                }
+            }
+        } else
+            prev = curr;
+        if (new_end != end && end.data % 2 != 0) {
+            prev.next = end.next;
+            end.next = null;
+            new_end.next = end;
+        }
+    }
+
     public static void main(String args[]) {
-        LinkedList ll = new LinkedList();
-        ll.addLast(1);
-        ll.addLast(2);
-        ll.addLast(3);
-        ll.addLast(4);
-        ll.addLast(5);
-        ll.printLL();
-        ll.zigZag();
-        ll.printLL();
+        LinkedList list = new LinkedList();
+
+        list.addFirst(4);
+        list.addFirst(3);
+        list.addFirst(2);
+        list.addFirst(1);
+
+        list.printLL();
+        // list.swapNodes(2, 4);
+        list.printLL();
 
     }
 }
