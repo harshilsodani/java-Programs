@@ -35,8 +35,8 @@ public class SwappingNodes extends LinkedList {
 
         if (prev2 != null) {
             prev2.next = curr1;
-        } else {// if prev2 == null , then curr2==head therefore for swapping curr1 with curr1
-                // make head curr2
+        } else {// if prev2 == null , then curr2==head therefore for swapping curr2 with curr1
+                // make head curr1
             head = curr1;
         }
 

@@ -20,7 +20,7 @@ public class OddEvenLL extends LinkedList {
             new_end = new_end.next; // Update 'new_end'
         }
 
-        // If the first node is even, update 'head'
+        
         if (curr.data % 2 == 0) {
             head = curr;
 
