@@ -1,3 +1,6 @@
+/**
+ * The QueueReversal class contains a method to reverse the order of elements in a queue using a stack.
+ */
 package Queue;
 
 import java.util.*;
