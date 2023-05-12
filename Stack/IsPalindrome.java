@@ -1,3 +1,6 @@
+/**
+ * The IsPalindrome class checks if a linked list is a palindrome using a stack.
+ */
 package Stack;
 
 import java.util.*;
@@ -15,6 +18,7 @@ public class IsPalindrome {
     }
 
     public static boolean isPalindrome(Node head) {
+        
         Node slow = head;
         boolean isPalin = true;
         Stack<Integer> s = new Stack<>();
@@ -24,6 +28,12 @@ public class IsPalindrome {
             slow = slow.next;
         }
 
+        // This code block is checking if the linked list is a palindrome by comparing the values of
+        // the nodes in the linked list with the values in a stack. It starts by popping the top
+        // element from the stack and comparing it with the value of the head node in the linked
+        // list. If they are equal, the `isPalin` variable is set to true, and the head is updated
+        // otherwise it is set to false and the loop is broken. The loop continues until all nodes 
+        //in the linked list have been compared with the values in the stack.
         while (head != null) {
             int i = s.pop();
             if (head.data == i) {

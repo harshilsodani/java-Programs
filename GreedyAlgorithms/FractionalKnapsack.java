@@ -44,7 +44,7 @@ public class FractionalKnapsack {
 
         int currWeight = 0;
 
-        for (int i = itemMatrix.length - 1; i >= 0; i--) { // we have reverse loop so that we can include with highest
+        for (int i = itemMatrix.length - 1; i >= 0; i--) { // we have reverse loop so that we can include item with highest
                                                            // ratio in the knapsack first
 
             if (currWeight + itemMatrix[i][2] <= maxWeight) {
