@@ -1,3 +1,7 @@
+/*
+ * Count total number of nodes in a tree
+ */
+
 package BinaryTrees;
 
 public class CountOfNodes extends BinaryTree {

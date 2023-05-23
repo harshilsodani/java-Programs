@@ -558,13 +558,14 @@ public class LinkedList {
     public static void main(String args[]) {
         LinkedList list = new LinkedList();
 
-        list.addFirst(4);
-        list.addFirst(3);
+        list.addFirst(-4);
+        list.addFirst(0);
         list.addFirst(2);
-        list.addFirst(1);
+        list.addFirst(3);
+        
 
         list.printLL();
         // list.swapNodes(2, 4);
-        list.printLL();
+        // list.printLL();
     }
 }

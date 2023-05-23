@@ -1,3 +1,6 @@
+/*
+ * calculate height of a tree
+ */
 package BinaryTrees;
 
 public class HeightOfTree extends BinaryTree {
