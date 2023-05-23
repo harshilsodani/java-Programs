@@ -12,7 +12,11 @@ public class TransformToSumTree extends BinaryTree {
         int rightChild = toSumTree(root.right);
 
         int data = root.data;
-        root.data = root.left.data + leftChild + root.right.data + rightChild;
+        
+        int newLeft = root.left == null ? 0 : root.left.data;
+        int newRight = root.right == null ? 0 : root.right.data;
+
+        root.data = newLeft + leftChild + newRight + rightChild;
 
         return data;
     }
