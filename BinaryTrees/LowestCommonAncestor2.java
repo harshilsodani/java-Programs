@@ -19,8 +19,8 @@ public class LowestCommonAncestor2 extends BinaryTree {
         }
 
         /*
-         * if both left and right Lca are not null then it means both have either or
-         * n2therefore root must be first common ancestor of both nodes.
+         * if both left and right Lca are not null then it means both have either n1 or
+         * n2 therefore root must be first common ancestor of both nodes.
          */
         return root;
     }

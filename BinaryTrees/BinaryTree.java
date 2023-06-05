@@ -16,6 +16,7 @@ public class BinaryTree {
         }
     }
 
+    /************************************************ */
     static class Info {
         int diam;
         int ht;
@@ -26,6 +27,7 @@ public class BinaryTree {
         }
     }
 
+    /************************************************ */
     static class Info1 {
         Node node;
         int hd;
@@ -36,6 +38,7 @@ public class BinaryTree {
         }
     }
 
+    /************************************************ */
     static int idx = -1;
 
     public static Node buildTree(int nodes[]) { // O(n)
@@ -54,6 +57,7 @@ public class BinaryTree {
 
     }
 
+    /************************************************ */
     public static void preorder(Node root) { // O(n)
 
         // base case
@@ -67,6 +71,7 @@ public class BinaryTree {
         preorder(root.right);
     }
 
+    /************************************************ */
     public void inorder(Node root) { // O(n)
 
         // base case
@@ -79,6 +84,7 @@ public class BinaryTree {
         inorder(root.right);
     }
 
+    /************************************************ */
     public void postorder(Node root) {
         // base case
         if (root == null) {
@@ -90,6 +96,7 @@ public class BinaryTree {
         System.out.print(root.data + " ");
     }
 
+    /************************************************ */
     public void levelorder(Node root) {
         if (root == null) {
             return;
@@ -122,6 +129,7 @@ public class BinaryTree {
 
     }
 
+    /************************************************ */
     public int height(Node root) {
 
         // base case
@@ -134,6 +142,7 @@ public class BinaryTree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    /************************************************ */
     public int count(Node root) {
         if (root == null) {
             return 0;
@@ -144,6 +153,7 @@ public class BinaryTree {
         return leftCount + rightCount + 1;
     }
 
+    /************************************************ */
     public int sumNodes(Node root) {
         if (root == null) {
             return 0;
@@ -154,6 +164,7 @@ public class BinaryTree {
         return leftSum + rightSum + root.data;
     }
 
+    /************************************************ */
     public int diameter2(Node root) {
 
         // base case
@@ -171,6 +182,7 @@ public class BinaryTree {
         return Math.max(Math.max(lDiam, rDiam), selfDiam);
     }
 
+    /************************************************ */
     public Info diameter1(Node root) {
 
         // base case
@@ -186,6 +198,7 @@ public class BinaryTree {
         return new Info(diam, ht);
     }
 
+    /************************************************ */
     public static boolean isIdentical(Node node, Node subRoot) {
         if (node == null && subRoot == null) {
             return true;
@@ -220,6 +233,7 @@ public class BinaryTree {
         return (isSubTree(root.left, subRoot) || isSubTree(root.right, subRoot));
     }
 
+    /************************************************ */
     public static void topView(Node root) {
         // Level order traversal
         Queue<Info1> q = new LinkedList<>();
@@ -263,6 +277,7 @@ public class BinaryTree {
         System.out.println();
     }
 
+    /************************************************ */
     public static void KLevel(Node root, int level, int k) {
         if (root == null) {
             return;
@@ -277,6 +292,7 @@ public class BinaryTree {
         KLevel(root.right, level + 1, k);
     }
 
+    /************************************************ */
     public static boolean getPath(Node root, int n, ArrayList<Node> path) {
         // base case
         if (root == null) {
@@ -301,6 +317,7 @@ public class BinaryTree {
 
     }
 
+    /************************************************ */
     public static Node lowestCommonAncestor1(Node root, int n1, int n2) {
         ArrayList<Node> path1 = new ArrayList<>();
         ArrayList<Node> path2 = new ArrayList<>();
@@ -322,6 +339,7 @@ public class BinaryTree {
 
     }
 
+    /************************************************ */
     public static Node lca2(Node root, int n1, int n2) {
         if (root == null || root.data == n1 || root.data == n2) {
             return root;
@@ -345,6 +363,7 @@ public class BinaryTree {
         return root;
     }
 
+    /************************************************ */
     public static int lcaDistance(Node root, int n) {
         // base case
         if (root == null) {
@@ -378,6 +397,7 @@ public class BinaryTree {
 
     }
 
+    /************************************************ */
     public static int KAncestor(Node root, int n, int k) {
 
         // base case
@@ -405,6 +425,7 @@ public class BinaryTree {
         return max + 1;
     }
 
+    /************************************************ */
     public static int toSumTree(Node root) {
         // base case
         if (root == null) {
@@ -424,24 +445,112 @@ public class BinaryTree {
         return data;
     }
 
+    /************************************************ */
+
+    static boolean univalued = true;
+
+    public static void isUnivalued(Node root) {
+        // base case
+        if (root == null) {
+            return;
+        }
+
+        int data = root.data;
+
+        if (root.left != null && root.left.data != data) {
+            univalued = false;
+            return;
+        }
+
+        if (root.right != null && root.right.data != data) {
+            univalued = false;
+            return;
+        }
+
+        isUnivalued(root.left);
+        isUnivalued(root.right);
+
+    }
+
+    /************************************************ */
+
+    public static boolean isInverted(Node root1, Node root2) {
+
+        // base case
+        if (root1 == null && root2 == null) {
+            return true;
+        } else if (root1 == null || root2 == null) {
+            return false;
+        } else if (root1.data != root2.data) {
+            return false;
+        }
+
+        return isInverted(root1.left, root2.right) && isInverted(root1.right, root2.left);
+
+    }
+
+    /************************************************ */
+
+    public Node invertTree(Node root) {
+        if (root == null) {
+            return root;
+        }
+
+        Node left = invertTree(root.left);
+        Node right = invertTree(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+
+    /************************************************ */
+
+    public static Node deleteNodes(Node root, int value) {
+        if (root == null) {
+            return null;
+        }
+
+        root.left = deleteNodes(root.left, value);
+        root.right = deleteNodes(root.right, value);
+
+        if (root.left == null && root.right == null && root.data == value) {
+            return null;
+        }
+
+        return root;
+
+    }
+
+    /************************************************ */
+
     public static void main(String[] args) {
 
         // Main tree
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
+        Node root1 = new Node(1);
+        root1.left = new Node(2);
+        root1.right = new Node(3);
+        root1.left.left = new Node(4);
+        root1.left.right = new Node(5);
+        root1.right.left = new Node(6);
+        root1.right.right = new Node(7);
+
+        Node root2 = new Node(1);
+        root2.left = new Node(3);
+        root2.right = new Node(3);
+        root2.left.left = new Node(3);
+        root2.left.right = new Node(2);
+        // root2.right.left = new Node(5);
+        // root2.right.right = new Node(4);
 
         // Sub tree
         // Node subRoot = new Node(2);
         // subRoot.left = new Node(4);
         // subRoot.right = new Node(5);
 
-        toSumTree(root);
-        preorder(root);
+        deleteNodes(root2, 3);
+        preorder(root2);
 
     }
 }

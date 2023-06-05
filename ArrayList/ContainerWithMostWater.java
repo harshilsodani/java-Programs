@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ContainerWithMostWater {
 
     // Brute Forece - O(n^2)
-    // public static int containerwithMostWater(ArrayList<Integer> height) {
+    // public static int containerWithMostWater(ArrayList<Integer> height) {
 
     // int maxWater = 0;
 

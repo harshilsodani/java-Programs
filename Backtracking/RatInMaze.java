@@ -1,7 +1,7 @@
 package Backtracking;
 
 public class RatInMaze {
-    public static void printotalSubArraysolution(int sol[][]) {
+    public static void printTotalSubArraysolution(int sol[][]) {
         for (int i = 0; i < sol.length; i++) {
             for (int j = 0; j < sol.length; j++) {
                 System.out.print(sol[i][j] + " ");
@@ -49,7 +49,7 @@ public class RatInMaze {
             return false;
         }
 
-        printotalSubArraysolution(sol);
+        printTotalSubArraysolution(sol);
         return true;
 
     }
