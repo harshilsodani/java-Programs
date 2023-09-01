@@ -21,7 +21,7 @@ public class DiamondPattern {
 
         }
 
-        // 2nd half
+        // // 2nd half
         for (int i = n; i >= 1; i--) {
             // spaces
             for (int j = 1; j <= n - i; j++) {

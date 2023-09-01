@@ -12,7 +12,6 @@ public class FloydTriangle {
         for (int i = 1; i <= totRows; i++) {
 
             // inner loop(columns)
-            // digitotalSubArrays
             for (int j = 1; j <= i; j++) {
                 System.out.print(num + " ");
                 num++;

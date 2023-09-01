@@ -1,6 +1,6 @@
 package ArraysCC;
 
-public class MaxSubArrSum {
+public class MaxSubArrSum { // O(n3)
     public static void main(String[] args) {
         int arr[] = { 4, 10, 23, 11, 6 };
         maxSubarraySum(arr);
@@ -14,6 +14,7 @@ public class MaxSubArrSum {
 
                 int currSum = 0;
                 for (int k = i; k <= j; k++) {
+                    // subarray sum
                     currSum += arr[k];
                 }
 

@@ -7,11 +7,11 @@ public class InvertTree extends BinaryTree {
             return root;
         }
 
-        Node left = invertTree(root.left);
-        Node right = invertTree(root.right);
+        Node leftInvertedTree = invertTree(root.left);
+        Node rightIvertedTree = invertTree(root.right);
 
-        root.left = right;
-        root.right = left;
+        root.left = rightIvertedTree;
+        root.right = leftInvertedTree;
 
         return root;
     }
