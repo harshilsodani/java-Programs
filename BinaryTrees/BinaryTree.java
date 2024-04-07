@@ -561,6 +561,26 @@ public class BinaryTree {
 
     /************************************************ */
 
+    static int max = Integer.MIN_VALUE;
+
+    public static int maxPathSum(Node root) {
+
+        // base case
+        if (root == null) {
+            return 0;
+        }
+
+        int leftSum = Math.max(0, maxPathSum(root.left));
+        int rightSum = Math.max(0, maxPathSum(root.right));
+        int rootSum = root.data + leftSum + rightSum;
+
+        max = Math.max(rootSum, max);
+
+        return root.data + Math.max(leftSum, rightSum);
+    }
+
+    /************************************************ */
+
     public static void main(String[] args) {
 
         // Main tree
@@ -572,21 +592,20 @@ public class BinaryTree {
         root1.right.left = new Node(6);
         root1.right.right = new Node(7);
 
-        Node root2 = new Node(1);
-        root2.left = new Node(3);
-        root2.right = new Node(3);
-        root2.left.left = new Node(3);
-        root2.left.right = new Node(2);
-        // root2.right.left = new Node(5);
-        // root2.right.right = new Node(4);
+        Node root2 = new Node(-10);
+        root2.left = new Node(9);
+        root2.right = new Node(20);
+        // root2.left.left = new Node(3);
+        // root2.left.right = new Node(2);
+        root2.right.left = new Node(15);
+        root2.right.right = new Node(7);
 
         // Sub tree
         // Node subRoot = new Node(2);
         // subRoot.left = new Node(4);
         // subRoot.right = new Node(5);
 
-        deleteNodes(root2, 3);
-        preorder(root2);
-
+        maxPathSum(root2);
+        System.out.println(max);
     }
 }

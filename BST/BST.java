@@ -423,6 +423,27 @@ public class BST {
         return inorder.get(k - 1);
     }
 
+    /*********************************/
+
+    public static void twoSumBST(Node root) {
+        ArrayList<Node> inorder1 = new ArrayList<>();
+        getInorderNode(root, inorder1);
+
+        for (int i = 0; i < inorder1.size() - 1; i++) {
+            int temp = 0;
+            for (int j = i + 1; j < inorder1.size(); j++) {
+
+                temp += inorder1.get(j).data;
+            }
+
+            inorder1.get(i).data = temp;
+        }
+
+        for (int i = 0; i < inorder1.size(); i++) {
+            System.out.print(inorder1.get(i).data + " ");
+        }
+    }
+
     public static void main(String[] args) {
         Node root1 = new Node(8);
         root1.left = new Node(5);
@@ -438,6 +459,8 @@ public class BST {
         // Node root = mergeBSTs(root1, root2);
         // preorder(root);
 
-        System.out.println(kthSmallest(root1, 2).data);
+        inorder(root2);
+        System.out.println();
+        twoSumBST(root2);
     }
 }

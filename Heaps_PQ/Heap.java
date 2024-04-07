@@ -80,7 +80,7 @@ public class Heap {
         h.add(4);
         h.add(1);
         h.add(5);
-
+        
         while (!h.isEmpty()) {
             System.out.println(h.peek());
             h.remove();

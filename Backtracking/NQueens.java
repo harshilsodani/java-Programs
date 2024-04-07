@@ -55,9 +55,8 @@ public class NQueens {
                 if (nQueen(board, row + 1)) {// function call
                     return true;
                 }
-                board[row][j] = 'x'; // backtracking step - had to remove the queen from itotalSubArrays previous
-                                     // position to put
-                                     // at itotalSubArrays new position.
+                board[row][j] = 'x'; // backtracking step - had to remove the queen from the previous
+                                     // position to put at the new position.
             }
 
         }

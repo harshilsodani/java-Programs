@@ -22,7 +22,7 @@ public class PriorityQueueJCF {
     public static void main(String[] args) {
         PriorityQueue<Student> pq = new PriorityQueue<>(Comparator.reverseOrder());
 
-        pq.add(new Student("A", 4));
+        pq.add(new Student("A", 4)); 
         pq.add(new Student("B", 3));
         pq.add(new Student("C", 5));
         pq.add(new Student("D", 1));
